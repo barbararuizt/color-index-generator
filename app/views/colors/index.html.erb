@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Color index generator</h1>
+  <p>Generate a color index from a list of colors.</p>
+  <%= simple_form_for(Color.new) do |f| %>
+  <%= f.input :title %>
+  <%= f.color_field :hex %>
+  <%= f.button :submit %>
+  <% end %>
+
+  <div>
+    <div class="flex flex-wrap" id="list">
+      <% @colors.each do |color| %>
+      <div style="width: calc(100% / 5);"> <!-- change 5 for input -->
+        <div class="flex items-center">
+            <div class="w-6 h-6 border-2 border-black rounded-full" style="background-color: #<%= color.hex[1..] %>">&nbsp;</div>
+            <span><%= color.title %></span>
+        </div>
+        <%= link_to 'Delete!', root_path, data: { turbo_confirm: 'Are you sure?', turbo_method: :delete } %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  </div>
+    <% @colors.each do |color| %>
+      
+      <%# color_path(color) %>
+    <% end %>
+  </div>
+</div>
